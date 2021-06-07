@@ -1,0 +1,128 @@
+.Pokedex {
+  text-align: center;
+}
+
+.Pokedex h1 {
+  margin: 1.6rem 0;
+  font-size: 3rem;
+}
+
+.Pokedex-pokemon {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.Pokedex-info-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Pokedex-info-container .Pokedex-header {
+  /*  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  margin: 1rem 0; */
+  /* display: flex; */
+  /* justify-content: space-between; */
+  display: grid;
+  align-items: center;
+  width: 85%;
+  /* text-align: center; */
+  /* justify-content: space-around; */
+  grid-template-columns: 1fr 340px 1fr;
+  margin: 1rem 0;
+}
+
+.Pokedex-info-container .Pokedex-header > .Pokedex-cntrl:last-child {
+  justify-self: end;
+}
+
+.Pokedex-prev,
+.Pokedex-next {
+  background-color: #ccc;
+  height: 40px;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 2rem;
+  border-radius: 30px;
+}
+.Pokedex-prev:hover,
+.Pokedex-next:hover {
+  opacity: 0.7;
+  cursor: pointer !important;
+}
+
+.Pokedex-footer {
+  margin: 1.6rem 0;
+}
+
+.Pokedex-footer a {
+  text-decoration: none;
+  color: red;
+}
+
+.Pokedex-cntrl {
+  display: flex;
+  align-items: center;
+}
+
+.Pokedex-cntrl span {
+  padding: 0 1rem;
+}
+
+.Pokedex-dropdown {
+  position: relative;
+}
+
+.Pokedex-dropdown .Pokedex-dropdown-menu {
+  width: 100%;
+  background-color: #333;
+  padding-left: 1rem;
+  border-radius: 8px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.Pokedex-dropdown .Pokedex-dropdown-menu i {
+  background: red;
+  padding: 12px 1rem;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+.Pokedex-dropdown .Pokedex-dropdown-menu i:hover {
+  cursor: pointer;
+  opacity: 0.9;
+}
+.Pokedex-dropdown .Pokedex-dropdown-items {
+  display: none;
+  background-color: #616161;
+  color: white;
+  position: absolute;
+  width: 100%;
+  z-index: 10;
+  max-height: 200px;
+  overflow-y: auto;
+}
+.Pokedex-dropdown .Pokedex-dropdown-items ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 1rem;
+}
+
+.Pokedex-dropdown .Pokedex-dropdown-items ul li {
+  padding: 8px 0;
+}
+.Pokedex-dropdown .Pokedex-dropdown-items ul li:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}

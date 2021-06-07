@@ -1,0 +1,54 @@
+.Autocomplete-form {
+  margin: 0 2.4rem;
+  position: relative;
+}
+
+.Autocomplete-form .form-border {
+  width: 400px;
+  margin: 6px;
+  padding: 10px 12px;
+  border-radius: 20px;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.24) 4px 3px 8px;
+}
+
+.Autocomplete-form .form-text {
+  border: none;
+  width: 90%;
+}
+.Autocomplete-form .form-text:focus {
+  border: none;
+  outline: none;
+}
+
+.Autocomplete-form i {
+  color: #333;
+  padding-right: 1rem;
+}
+
+.Autocomplete-list {
+  padding: 1rem;
+
+  position: absolute;
+  top: 42px;
+  left: 6px;
+  overflow-y: scroll;
+  color: #333;
+  background-color: white;
+  width: 400px;
+  max-height: 400px;
+  z-index: 2;
+  display: none;
+}
+
+.Autocomplete-list li {
+  display: flex;
+  justify-content: left;
+  padding: 6px 0;
+  font-size: 1.2rem;
+}
+
+.Autocomplete-list li:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}

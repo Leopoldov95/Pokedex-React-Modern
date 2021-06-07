@@ -1,0 +1,9 @@
+.Listpokemon {
+  display: flex;
+  align-items: center;
+}
+
+.Listpokemon img {
+  height: 50px;
+  width: 50px;
+}

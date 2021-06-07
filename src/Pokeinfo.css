@@ -1,0 +1,166 @@
+.Pokeinfo {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(245, 241, 241);
+  box-shadow: rgba(0, 0, 0, 0.24) 4px 3px 8px;
+  padding: 1.5rem;
+  width: 90%;
+}
+
+.Pokeinfo .Pokeinfo-top {
+  /*  display: flex;
+  justify-content: space-between; */
+  display: grid;
+  grid-template-columns: 30% 30% 40%;
+  align-items: center;
+}
+
+.Pokeinfo img {
+  width: 320px;
+  height: 320px;
+}
+
+.Pokeinfo-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.Pokeinfo-info .Pokeinfo-info-name {
+  font-size: 2.3rem;
+}
+.Pokeinfo-info div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  margin: 5px 0;
+}
+
+.Pokeinfo-info div ul {
+  position: absolute;
+  top: 5px;
+  right: 0;
+}
+
+.Pokeinfo-info p {
+  font-size: 1.4rem;
+  max-width: 200px;
+}
+
+.Pokeinfo-stats {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+  align-items: center;
+}
+
+.Pokeinfo-desc {
+  height: 70%;
+  padding: 1rem 2rem;
+}
+
+.Pokeinfo-desc h2 {
+  margin-bottom: 8px;
+}
+
+.Pokeinfo-desc div {
+  background-color: white;
+  height: 100%;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1rem;
+  line-height: 1.5;
+}
+
+.Pokeinfo-type {
+  text-transform: uppercase;
+  background-color: red;
+  color: white;
+  width: 80px;
+  padding: 3px 0;
+  margin: 0 4px;
+  border-radius: 10px;
+}
+
+.Pokeinfo-stat-container {
+  display: grid;
+  grid-template-columns: 80px auto;
+  align-items: center;
+  width: 80%;
+  margin: 0 3rem;
+}
+
+.Pokeinfo-stat-container > div:first-child {
+  justify-self: baseline;
+}
+/* Stats bar */
+.progress {
+  background-color: #f5f5f5;
+  border-radius: 20px;
+  position: relative;
+  margin: 9px 0;
+  height: 20px;
+
+  margin-left: 1rem;
+}
+
+.progress-done {
+  border-radius: 20px;
+  color: rgb(0, 0, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 0;
+  opacity: 0;
+  transition: 0.3s ease 0.1s;
+}
+
+.Pokeinfo-bottom {
+  display: flex;
+  margin-top: 2rem;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.Pokeinfo-bottom h2 {
+  padding-bottom: 1rem;
+}
+
+.Pokeinfo-bottom > div:last-child {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.Pokeinfo-bottom > div:last-child > div {
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+.Pokeinfo-bottom .Pokeinfo-card {
+  background-color: white;
+  border-radius: 20px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 0 1rem;
+}
+.Pokeinfo-bottom .Pokeinfo-card:hover {
+  cursor: pointer;
+}
+.Pokeinfo-bottom .Pokeinfo-card img {
+  width: 120px;
+  height: 120px;
+}
+.Pokeinfo-bottom .Pokeinfo-card span {
+  display: inline-block;
+  padding: 1rem 0;
+}

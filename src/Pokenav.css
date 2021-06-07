@@ -1,0 +1,79 @@
+.Pokenav-nav {
+  position: relative;
+}
+
+.Pokenav-nav-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+  color: white;
+  background-color: red;
+}
+
+.Pokenav-nav-top div {
+  display: flex;
+  align-items: center;
+}
+
+.Pokenav-nav-top h1 {
+  font-size: 4rem;
+}
+
+.Pokenav-nav-top img {
+  width: 80px;
+  height: 80px;
+}
+
+.Pokenav-nav-bottom {
+  background-color: #666;
+}
+
+.Pokenav-nav-bottom ul {
+  display: flex;
+}
+
+.Pokenav-nav-bottom li {
+  padding: 6px 1rem;
+  color: rgb(226, 226, 226);
+  margin: 0 10px;
+}
+
+.Pokenav-nav-bottom li:hover {
+  cursor: pointer;
+
+  background-color: rgb(128, 126, 126);
+}
+
+.Pokenav-Autocomplete {
+  width: 92%;
+}
+
+.Pokenav-Autocomplete .Autocomplete {
+  width: 90%;
+}
+
+.mobile-menu {
+  display: none !important;
+  transform: scale(1.4);
+  border: 1px solid white;
+  padding: 2px 4px;
+  border-radius: 5px;
+}
+
+.mobile-menu:hover {
+  opacity: 0.9;
+}
+
+.mobile-menu .icon {
+  color: white;
+}
+
+.menu-active .Pokenav-nav-bottom {
+  opacity: 1;
+  display: block !important;
+}
+
+.menu-active .Autocomplete {
+  display: block;
+}
