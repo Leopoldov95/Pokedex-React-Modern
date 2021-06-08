@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+
 import "./Pokenav.css";
 import Autocomplete from "./Autocomplete";
 import logo from "./pokeball.png";
@@ -39,33 +39,23 @@ function Pokenav(props) {
         </div>
         <div className="Pokenav-nav-bottom">
           <ul className="myLinks">
-            <Link to="/">
-              <li onClick={() => render(0, limit[7])}>All</li>
-            </Link>
-            <Link to="/">
-              <li onClick={() => render(0, limit[0])}>Gen 1</li>
-            </Link>
-            <Link to="/">
-              <li onClick={() => render(limit[0], limit[1])}>Gen 2</li>
-            </Link>
-            <Link to="/">
-              <li onClick={() => render(limit[1], limit[2])}>Gen 3</li>
-            </Link>
-            <Link to="/">
-              <li onClick={() => render(limit[2], limit[3])}>Gen 4</li>
-            </Link>
-            <Link to="/">
-              <li onClick={() => render(limit[3], limit[4])}>Gen 5</li>
-            </Link>
-            <Link to="/">
-              <li onClick={() => render(limit[4], limit[5])}>Gen 6</li>
-            </Link>
-            <Link to="/">
-              <li onClick={() => render(limit[5], limit[6])}>Gen 7</li>
-            </Link>
-            <Link to="/">
-              <li onClick={() => render(limit[6], limit[7])}>Gen 8</li>
-            </Link>
+            <li onClick={() => render(0, limit[7])}>All</li>
+
+            <li onClick={() => render(0, limit[0])}>Gen 1</li>
+
+            <li onClick={() => render(limit[0], limit[1])}>Gen 2</li>
+
+            <li onClick={() => render(limit[1], limit[2])}>Gen 3</li>
+
+            <li onClick={() => render(limit[2], limit[3])}>Gen 4</li>
+
+            <li onClick={() => render(limit[3], limit[4])}>Gen 5</li>
+
+            <li onClick={() => render(limit[4], limit[5])}>Gen 6</li>
+
+            <li onClick={() => render(limit[5], limit[6])}>Gen 7</li>
+
+            <li onClick={() => render(limit[6], limit[7])}>Gen 8</li>
           </ul>
         </div>
       </div>

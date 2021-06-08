@@ -1,6 +1,6 @@
-import React, { useEffect, useState, Link } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
 import Pokecard from "./Pokecard";
 
 import RenderPokeInfo from "./RenderPokeInfo";
@@ -18,7 +18,7 @@ const POKE_FORMS = "https://pokeapi.co/api/v2/pokemon-species/";
 function Pokedex() {
   const defaultCall = 151;
   const [pokemon, setPokemon] = useState([]);
-  const [loading, setLoading] = useState(false);
+
   const [displayPokedex, setDisplayPokedex] = useState(true);
   const [currPokemon, setCurrPokemon] = useState([]);
 
@@ -49,7 +49,6 @@ function Pokedex() {
           img: `${IMG_URL}${name}.png`,
         });
       }
-      setLoading(false);
       setDisplayPokedex(true);
       setPokemon([...pokemon]);
     } catch (err) {
@@ -158,6 +157,7 @@ function Pokedex() {
     });
     setCurrPokemon(data); // set this first otherwise it will crash the app
     setDisplayPokedex(false);
+    window.scrollTo(0, 0);
   };
 
   const handleInput = (e) => {
@@ -182,50 +182,36 @@ function Pokedex() {
   ));
 
   return (
-    <Router>
-      <div className="Pokedex" onClick={handleInput}>
-        <Pokenav displayPokemon={displayPokemon} handleInfo={handleInfo} />
+    <div className="Pokedex" onClick={handleInput}>
+      <Pokenav displayPokemon={displayPokemon} handleInfo={handleInfo} />
 
-        <Switch>
-          <Route
-            path="/"
-            exact
-            render={() => (
-              <div>
-                <div className="Pokedex-pokemon">{generatePokemon}</div>
-              </div>
-            )}
-          />
-
-          <Route
-            path="/pokemon"
-            exact
-            render={
-              () => ({
-                RenderPokeInfo,
-              })
-              /*    handleMenuBtn={handleMenuBtn}
-          handleInfo={handleInfo}
-          currentPokemon={currPokemon[0]} */
-            }
-          />
-        </Switch>
-        <div className="Pokedex-footer">
-          <p>
-            created by{" "}
-            <a href="https://github.com/Leopoldov95" target="#">
-              Leopoldo Ortega
-            </a>
-          </p>
-          <p>
-            powered by{" "}
-            <a href="https://pokeapi.co/" target="#">
-              Pokeapi
-            </a>
-          </p>
+      {displayPokedex ? (
+        <div>
+          <div className="Pokedex-pokemon">{generatePokemon}</div>
         </div>
+      ) : (
+        <RenderPokeInfo
+          handleMenuBtn={handleMenuBtn}
+          handleInfo={handleInfo}
+          currentPokemon={currPokemon[0]}
+        />
+      )}
+
+      <div className="Pokedex-footer">
+        <p>
+          created by{" "}
+          <a href="https://github.com/Leopoldov95" target="#">
+            Leopoldo Ortega
+          </a>
+        </p>
+        <p>
+          powered by{" "}
+          <a href="https://pokeapi.co/" target="#">
+            Pokeapi
+          </a>
+        </p>
       </div>
-    </Router>
+    </div>
   );
 }
 

@@ -10,59 +10,49 @@ const SPRITE_ALT =
   "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/";
 
 function Pokeinfo(props) {
-  //this.state = { stageZero: [], stageOne: [], stageTwo: [] };
   const [stageZero, setStageZero] = useState([]);
   const [stageOne, setStageOne] = useState([]);
   const [stageTwo, setStageTwo] = useState([]);
 
   useEffect(() => {
-    handleEvoData(props.evolution);
-  }, []);
-  /* componentDidMount() {
-    // this.handleEvo(this.props.evolution);
-    this.handleEvoData(this.props.evolution);
-  } */
-  const padToThree = (num) => {
-    return num <= 999 ? `00${num}`.slice(-3) : num;
-  };
-  const handleEvoData = async (url) => {
-    try {
-      const evoArr = [];
-      const basic = [];
-      const stageOne = [];
-      const stageTwo = [];
-      const res = await axios.get(url.url);
-      const evoData = res.data.chain;
-      // there are maximum 3 stages of evolution
-      //console.log(evoData.species);
-      // this will alwasy push base form
-      basic.push(evoData.species);
-      if (evoData.evolves_to.length > 0) {
-        for (let form of evoData.evolves_to) {
-          // pushing all stage one pokemon to stageOne
-          stageOne.push(form.species);
-        }
-        if (evoData.evolves_to[0].evolves_to.length > 0) {
-          for (let form of evoData.evolves_to[0].evolves_to) {
-            // pushing all stage two pokemon to stagetwo
-            stageTwo.push(form.species);
+    const handleEvoData = async (url) => {
+      try {
+        const evoArr = [];
+        const basic = [];
+        const stageOne = [];
+        const stageTwo = [];
+        const res = await axios.get(url.url);
+        const evoData = res.data.chain;
+        // there are maximum 3 stages of evolution
+
+        // this will alwasy push base form
+        basic.push(evoData.species);
+        if (evoData.evolves_to.length > 0) {
+          for (let form of evoData.evolves_to) {
+            // pushing all stage one pokemon to stageOne
+            stageOne.push(form.species);
+          }
+          if (evoData.evolves_to[0].evolves_to.length > 0) {
+            for (let form of evoData.evolves_to[0].evolves_to) {
+              // pushing all stage two pokemon to stagetwo
+              stageTwo.push(form.species);
+            }
           }
         }
+
+        evoArr.push(basic, stageOne, stageTwo);
+        setStageZero([...basic]);
+        setStageOne([...stageOne]);
+        setStageTwo([...stageTwo]);
+      } catch (err) {
+        alert(err);
       }
+    };
+    handleEvoData(props.evolution);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-      evoArr.push(basic, stageOne, stageTwo);
-      setStageZero([...basic]);
-      setStageOne([...stageOne]);
-      setStageTwo([...stageTwo]);
-
-      /* this.setState({
-        stageZero: [...basic],
-        stageOne: [...stageOne],
-        stageTwo: [...stageTwo],
-      }); */
-    } catch (err) {
-      alert(err);
-    }
+  const padToThree = (num) => {
+    return num <= 999 ? `00${num}`.slice(-3) : num;
   };
 
   const handleStats = (num) => {
@@ -273,15 +263,9 @@ function Pokeinfo(props) {
         <div className="Pokeinfo-desc">
           <h2>Pokedex Info</h2>
           <div>
-            <p>{props.desc}</p>
+            <p>{props.desc.replace(/(?:\f)/g, " ")}</p>
           </div>
         </div>
-        {/* <div className="Pokeinfo-stats">
-            {generateStats}
-            <p>
-              BST: <span style={{ fontWeight: "bold" }}>{calcBST()}</span>
-            </p>
-          </div> */}
       </div>
       <div className="Pokeinfo-bottom">
         <div className="Pokeinfo-stats">
@@ -290,12 +274,7 @@ function Pokeinfo(props) {
             BST: <span style={{ fontWeight: "bold" }}>{calcBST()}</span>
           </p>
         </div>
-        {/* <div>
-            <h2>Description</h2>
-            <div>
-              <p>{props.desc}</p>
-            </div>
-          </div> */}
+
         <div>
           <h2>Evolution</h2>
           <div>
