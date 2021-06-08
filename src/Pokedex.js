@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Link } from "react";
 import axios from "axios";
-
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Pokecard from "./Pokecard";
 
 import RenderPokeInfo from "./RenderPokeInfo";
@@ -21,11 +21,6 @@ function Pokedex() {
   const [loading, setLoading] = useState(false);
   const [displayPokedex, setDisplayPokedex] = useState(true);
   const [currPokemon, setCurrPokemon] = useState([]);
-
-  /* pokemon: [], // all pokemon will be stored here
-      loading: false,
-      displayPokedex: true,
-      currPokemon: [], */
 
   useEffect(() => {
     getPokemon(0, defaultCall);
@@ -57,18 +52,12 @@ function Pokedex() {
       setLoading(false);
       setDisplayPokedex(true);
       setPokemon([...pokemon]);
-      /* this.setState((st) => ({
-        loading: false,
-        displayPokedex: true,
-        pokemon: [...st.pokemon, ...pokemon],
-      })); */
     } catch (err) {
       alert(err);
     }
   };
 
   const displayPokemon = (start, end) => {
-    //this.setState({ pokemon: [] });
     setPokemon([]);
 
     getPokemon(start, end);
@@ -167,12 +156,8 @@ function Pokedex() {
       desc,
       evolution_chain,
     });
+    setCurrPokemon(data); // set this first otherwise it will crash the app
     setDisplayPokedex(false);
-    setCurrPokemon(data);
-    /* this.setState({
-      displayPokedex: false,
-      currPokemon: data,
-    }); */
   };
 
   const handleInput = (e) => {
@@ -196,39 +181,51 @@ function Pokedex() {
     />
   ));
 
-  let currentPokemon = { currPokemon }[0];
-
   return (
-    <div className="Pokedex" onClick={handleInput}>
-      <Pokenav displayPokemon={displayPokemon} handleInfo={handleInfo} />
+    <Router>
+      <div className="Pokedex" onClick={handleInput}>
+        <Pokenav displayPokemon={displayPokemon} handleInfo={handleInfo} />
 
-      {displayPokedex ? (
-        <div>
-          {/*   <img src="./pokemon-types/bug.png" /> */}
-          <div className="Pokedex-pokemon">{generatePokemon}</div>
-        </div>
-      ) : (
-        <RenderPokeInfo
-          handleMenuBtn={handleMenuBtn}
+        <Switch>
+          <Route
+            path="/"
+            exact
+            render={() => (
+              <div>
+                <div className="Pokedex-pokemon">{generatePokemon}</div>
+              </div>
+            )}
+          />
+
+          <Route
+            path="/pokemon"
+            exact
+            render={
+              () => ({
+                RenderPokeInfo,
+              })
+              /*    handleMenuBtn={handleMenuBtn}
           handleInfo={handleInfo}
-          currentPokemon={currentPokemon}
-        />
-      )}
-      <div className="Pokedex-footer">
-        <p>
-          created by{" "}
-          <a href="https://github.com/Leopoldov95" target="#">
-            Leopoldo Ortega
-          </a>
-        </p>
-        <p>
-          powered by{" "}
-          <a href="https://pokeapi.co/" target="#">
-            Pokeapi
-          </a>
-        </p>
+          currentPokemon={currPokemon[0]} */
+            }
+          />
+        </Switch>
+        <div className="Pokedex-footer">
+          <p>
+            created by{" "}
+            <a href="https://github.com/Leopoldov95" target="#">
+              Leopoldo Ortega
+            </a>
+          </p>
+          <p>
+            powered by{" "}
+            <a href="https://pokeapi.co/" target="#">
+              Pokeapi
+            </a>
+          </p>
+        </div>
       </div>
-    </div>
+    </Router>
   );
 }
 
