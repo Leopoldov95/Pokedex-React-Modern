@@ -53,7 +53,7 @@ function Autocomplete(props) {
             placeholder="Search"
           />
         </div>
-        {this.state.search.length >= 1 ? (
+        {search.length >= 1 ? (
           <div className="Autocomplete-list ">
             <ul>{displayRes}</ul>
           </div>
