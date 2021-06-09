@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import axios from "axios";
 
 import Pokecard from "./Pokecard";
@@ -23,29 +24,34 @@ function Pokedex() {
   const [currPokemon, setCurrPokemon] = useState([]);
 
   useEffect(() => {
-    getPokemon(0, defaultCall);
+    getPokemon(defaultCall, 0);
   }, []);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [currPokemon]);
 
   const getPokemon = async (start, end) => {
     try {
-      let res = await axios.get(`${API_URl}?limit=${end}`);
+      let res = await axios.get(`${API_URl}?limit=${start}&offset=${end}`);
 
       let data = res.data.results;
       let pokemon = [];
-      for (let i = start; i < end; i++) {
+      for (let i of data) {
         let name;
-        if (
-          data[i].name.includes("minior") ||
-          data[i].name.includes("mimikyu")
-        ) {
-          name = data[i].name.split("-")[0];
+        if (i.name.includes("minior") || i.name.includes("mimikyu")) {
+          name = i.name.split("-")[0];
         } else {
-          name = data[i].name;
+          name = i.name;
         }
         pokemon.push({
           name: name,
-          info: data[i].url,
-          id: i + 1,
+          info: i.url,
+          id: Number(
+            i.url
+              .replace("https://pokeapi.co/api/v2/pokemon/", "")
+              .replace("/", "")
+          ),
           img: `${IMG_URL}${name}.png`,
         });
       }
@@ -59,6 +65,7 @@ function Pokedex() {
   const displayPokemon = (start, end) => {
     setPokemon([]);
 
+    // will want to make router changes here
     getPokemon(start, end);
     if (document.querySelector(".myLinks").classList.contains("menu-active")) {
       document.querySelector(".myLinks").classList.remove("menu-active");
@@ -155,9 +162,9 @@ function Pokedex() {
       desc,
       evolution_chain,
     });
+    console.log("this function was executed");
     setCurrPokemon(data); // set this first otherwise it will crash the app
     setDisplayPokedex(false);
-    window.scrollTo(0, 0);
   };
 
   const handleInput = (e) => {
@@ -182,36 +189,51 @@ function Pokedex() {
   ));
 
   return (
-    <div className="Pokedex" onClick={handleInput}>
-      <Pokenav displayPokemon={displayPokemon} handleInfo={handleInfo} />
+    <Router>
+      <div className="Pokedex" onClick={handleInput}>
+        <Pokenav displayPokemon={displayPokemon} handleInfo={handleInfo} />
+        <Switch>
+          <Route
+            path="/"
+            exact
+            render={() => (
+              <div>
+                <div className="Pokedex-pokemon">{generatePokemon}</div>
+              </div>
+            )}
+          />
 
-      {displayPokedex ? (
-        <div>
-          <div className="Pokedex-pokemon">{generatePokemon}</div>
+          <Route path="/pokemon/:id/:name" component={RenderPokeInfo} />
+        </Switch>
+
+        {/*    {displayPokedex ? (
+          <div>
+            <div className="Pokedex-pokemon">{generatePokemon}</div>
+          </div>
+        ) : (
+          <RenderPokeInfo
+            handleMenuBtn={handleMenuBtn}
+            handleInfo={handleInfo}
+            currentPokemon={currPokemon[0]}
+          />
+        )}
+ */}
+        <div className="Pokedex-footer">
+          <p>
+            created by{" "}
+            <a href="https://github.com/Leopoldov95" target="#">
+              Leopoldo Ortega
+            </a>
+          </p>
+          <p>
+            powered by{" "}
+            <a href="https://pokeapi.co/" target="#">
+              Pokeapi
+            </a>
+          </p>
         </div>
-      ) : (
-        <RenderPokeInfo
-          handleMenuBtn={handleMenuBtn}
-          handleInfo={handleInfo}
-          currentPokemon={currPokemon[0]}
-        />
-      )}
-
-      <div className="Pokedex-footer">
-        <p>
-          created by{" "}
-          <a href="https://github.com/Leopoldov95" target="#">
-            Leopoldo Ortega
-          </a>
-        </p>
-        <p>
-          powered by{" "}
-          <a href="https://pokeapi.co/" target="#">
-            Pokeapi
-          </a>
-        </p>
       </div>
-    </div>
+    </Router>
   );
 }
 

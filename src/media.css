@@ -87,10 +87,17 @@
   .mobile-menu {
     display: block !important;
   }
+
+  .Pokenav-nav {
+    position: fixed;
+    width: 100%;
+    z-index: 5;
+  }
   .Pokedex-pokemon {
     flex-direction: column;
     align-items: center;
     margin: 0;
+    padding-top: 42px;
   }
 
   .Pokecard {
@@ -162,6 +169,7 @@
 
   .Pokeinfo-desc {
     padding: 1rem 0;
+    margin-top: 1.6rem;
   }
 
   .Pokeinfo-stat-container {
@@ -175,8 +183,13 @@
     height: 90px;
   }
 
+  .Pokenav-Autocomplete {
+    width: 92%;
+  }
+
   .Autocomplete-list {
     width: 100%;
+    top: 34px;
   }
   .Autocomplete-form .form-border {
     width: 85%;

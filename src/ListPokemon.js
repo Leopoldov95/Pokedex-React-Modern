@@ -1,15 +1,23 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import PokeName from "./pokemon.json";
 import "./ListPokemon.css";
 
 function ListPokemon(props) {
   return (
-    <li
-      className="Listpokemon"
-      onClick={() => props.displayPokemon(props.url, props.name.toLowerCase())}
+    <Link
+      to={`pokemon/${Number(PokeName.indexOf(props.name) + 1)}/${props.name}`}
     >
-      <img src={props.img} alt={props.name} />
-      {props.name}
-    </li>
+      <li
+        className="Listpokemon"
+        onClick={() =>
+          props.displayPokemon(props.url, props.name.toLowerCase())
+        }
+      >
+        <img src={props.img} alt={props.name} />
+        {props.name}
+      </li>
+    </Link>
   );
 }
 

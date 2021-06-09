@@ -21,3 +21,8 @@ returns 10065
 9 - refctor, such as using padTothree
 10 - when user cicks on a pokemon, move display to top of page - DONE
 11 - fix ability overflow
+12 - redo the entire navigation
+example - pokemon?limit=100&offset=151
+          limit - how many pokemon to fetch
+          offset - where to begin the count
+-- how to access props in render vs component
