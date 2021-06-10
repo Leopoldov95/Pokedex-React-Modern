@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import PokeList from "./pokemon.json";
 import "./Pokeinfo.css";
 
@@ -132,33 +133,27 @@ function Pokeinfo(props) {
 
   const generateEvoCard = (data) => {
     return data.map((evo) => (
-      <div
-        key={evo.name}
-        className="Pokeinfo-card"
-        onClick={() =>
-          props.handleInfo(
-            `https://pokeapi.co/api/v2/pokemon/${
-              PokeList.indexOf(
-                evo.name[0].toUpperCase() + evo.name.substring(1)
-              ) + 1
-            }`,
-            evo.name
-          )
-        }
+      <Link
+        to={`/pokemon/${evo.name}/${
+          PokeList.indexOf(evo.name[0].toUpperCase() + evo.name.substring(1)) +
+          1
+        }`}
       >
-        <img
-          src={`${SPRITE_IMG}${evo.name}.png`}
-          alt={evo.name}
-          onError={(e) => {
-            e.target.src = `${SPRITE_ALT}${
-              PokeList.indexOf(
-                evo.name[0].toUpperCase() + evo.name.substring(1)
-              ) + 1
-            }.png`;
-          }}
-        />
-        <span>{evo.name[0].toUpperCase() + evo.name.substring(1)}</span>
-      </div>
+        <div key={evo.name} className="Pokeinfo-card">
+          <img
+            src={`${SPRITE_IMG}${evo.name}.png`}
+            alt={evo.name}
+            onError={(e) => {
+              e.target.src = `${SPRITE_ALT}${
+                PokeList.indexOf(
+                  evo.name[0].toUpperCase() + evo.name.substring(1)
+                ) + 1
+              }.png`;
+            }}
+          />
+          <span>{evo.name[0].toUpperCase() + evo.name.substring(1)}</span>
+        </div>
+      </Link>
     ));
   };
 

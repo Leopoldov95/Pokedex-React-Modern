@@ -20,6 +20,7 @@ function RenderPokeInfo(props) {
   }, []);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     handleInfo(props.match.params.name, props.match.params.id);
   }, [props]);
 
@@ -132,7 +133,21 @@ function RenderPokeInfo(props) {
         <div className="Pokedex-info-container">
           <div className="Pokedex-header">
             <div className="Pokedex-cntrl">
-              <Link to={`/pokemon/${Number(props.match.params.id) - 1}`}>
+              <Link
+                to={`/pokemon/${PokeJSON[
+                  Number(
+                    currPokemon[0].species.url
+                      .replace("https://pokeapi.co/api/v2/pokemon-species/", "")
+                      .replace("/", "")
+                  ) - 2
+                ].toLowerCase()}/${
+                  Number(
+                    currPokemon[0].species.url
+                      .replace("https://pokeapi.co/api/v2/pokemon-species/", "")
+                      .replace("/", "")
+                  ) - 1
+                }`}
+              >
                 <div
                   className="Pokedex-prev"
                   /* onClick={() =>
@@ -157,16 +172,19 @@ function RenderPokeInfo(props) {
               <span>
                 {PokeJSON[
                   Number(
-                    currPokemon[0].varData[0].url
-                      .replace("https://pokeapi.co/api/v2/pokemon/", "")
+                    currPokemon[0].species.url
+                      .replace("https://pokeapi.co/api/v2/pokemon-species/", "")
                       .replace("/", "")
                   ) - 2
                 ] === undefined
                   ? ""
                   : PokeJSON[
                       Number(
-                        currPokemon[0].varData[0].url
-                          .replace("https://pokeapi.co/api/v2/pokemon/", "")
+                        currPokemon[0].species.url
+                          .replace(
+                            "https://pokeapi.co/api/v2/pokemon-species/",
+                            ""
+                          )
                           .replace("/", "")
                       ) - 2
                     ]}
@@ -212,21 +230,38 @@ function RenderPokeInfo(props) {
               <span>
                 {PokeJSON[
                   Number(
-                    currPokemon[0].varData[0].url
-                      .replace("https://pokeapi.co/api/v2/pokemon/", "")
+                    currPokemon[0].species.url
+                      .replace("https://pokeapi.co/api/v2/pokemon-species/", "")
                       .replace("/", "")
                   )
                 ] === undefined
                   ? ""
                   : PokeJSON[
                       Number(
-                        currPokemon[0].varData[0].url
-                          .replace("https://pokeapi.co/api/v2/pokemon/", "")
+                        currPokemon[0].species.url
+                          .replace(
+                            "https://pokeapi.co/api/v2/pokemon-species/",
+                            ""
+                          )
                           .replace("/", "")
                       )
                     ]}
               </span>
-              <Link to={`/pokemon/${Number(props.match.params.id) + 1}`}>
+              <Link
+                to={`/pokemon/${PokeJSON[
+                  Number(
+                    currPokemon[0].species.url
+                      .replace("https://pokeapi.co/api/v2/pokemon-species/", "")
+                      .replace("/", "")
+                  )
+                ].toLowerCase()}/${
+                  Number(
+                    currPokemon[0].species.url
+                      .replace("https://pokeapi.co/api/v2/pokemon-species/", "")
+                      .replace("/", "")
+                  ) + 1
+                }`}
+              >
                 <div
                   className="Pokedex-next"
                   /*  onClick={() =>
