@@ -5,7 +5,7 @@ import "./Pokecard.css";
 function Pokecard(props) {
   // console.log(props);
   return (
-    <Link to={`/pokemon/${props.id}/${props.name}`}>
+    <Link to={`/pokemon/${props.name}/${props.id}`}>
       <div
         className="Pokecard"
         // onClick={props.handleInfo}

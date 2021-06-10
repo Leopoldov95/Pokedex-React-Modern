@@ -21,15 +21,10 @@ function Pokedex() {
   const [pokemon, setPokemon] = useState([]);
 
   const [displayPokedex, setDisplayPokedex] = useState(true);
-  const [currPokemon, setCurrPokemon] = useState([]);
 
   useEffect(() => {
     getPokemon(defaultCall, 0);
   }, []);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [currPokemon]);
 
   const getPokemon = async (start, end) => {
     try {
@@ -71,100 +66,11 @@ function Pokedex() {
       document.querySelector(".myLinks").classList.remove("menu-active");
     }
   };
-
-  const handleMenuBtn = () => {
-    const x = document.querySelector(".menu-toggle");
-    x.classList.toggle(".active");
-    if (x.classList.contains(".active")) {
-      document.querySelector(".Pokedex-dropdown-items ").style.display =
-        "block";
-    } else {
-      document.querySelector(".Pokedex-dropdown-items ").style.display = "none";
-    }
-  };
-
-  const closeFormSel = () => {
-    if (document.querySelector(".Pokedex-dropdown-items")) {
-      document.querySelector(".Pokedex-dropdown-items").style.display = "none";
-    }
-  };
-
   const closeAutocomplete = () => {
     if (document.querySelector(".Autocomplete-list")) {
       document.querySelector(".Autocomplete-list").style.display = "none";
       document.querySelector(".form-text").value = "";
     }
-  };
-
-  const getPokeInfo = async (url) => {
-    try {
-      let res = await axios.get(url);
-      return res.data;
-    } catch (err) {
-      alert(err);
-    }
-  };
-
-  const getForms = async (forms) => {
-    let varData = [];
-    let desc;
-    let res = await axios.get(`${POKE_FORMS}${forms}/`);
-    let { evolution_chain, flavor_text_entries, varieties } = res.data;
-    for (let i of flavor_text_entries) {
-      if (i.language.name === "en") {
-        desc = i.flavor_text;
-        break;
-      }
-    }
-
-    if (varieties.length > 1) {
-      for (let prop of varieties) {
-        varData.push(prop.pokemon);
-      }
-
-      return { evolution_chain, desc, varData };
-    }
-    // these lines of code only trigger if above conditions have not been met
-    varData.push(varieties[0].pokemon);
-    return { evolution_chain, desc, varData };
-  };
-
-  const handleInfo = async (info, speciesURL) => {
-    closeAutocomplete();
-    closeFormSel();
-    let data = [];
-    const {
-      name,
-      weight,
-      id,
-      types,
-      height,
-      abilities,
-      species,
-      stats,
-      sprites,
-    } = await getPokeInfo(info);
-
-    // left off here, handle the addtional information!
-    let { varData, desc, evolution_chain } = await getForms(speciesURL);
-
-    data.push({
-      name,
-      weight,
-      id,
-      types,
-      height,
-      abilities,
-      stats,
-      sprites,
-      species,
-      varData,
-      desc,
-      evolution_chain,
-    });
-    console.log("this function was executed");
-    setCurrPokemon(data); // set this first otherwise it will crash the app
-    setDisplayPokedex(false);
   };
 
   const handleInput = (e) => {
@@ -178,7 +84,7 @@ function Pokedex() {
 
   let generatePokemon = pokemon.map((p) => (
     <Pokecard
-      handleInfo={() => handleInfo(p.info, p.id)}
+      // handleInfo={() => handleInfo(p.info, p.id)}
       type={TypeInfo[p.id - 1]}
       name={p.name}
       info={p.info}
@@ -191,7 +97,7 @@ function Pokedex() {
   return (
     <Router>
       <div className="Pokedex" onClick={handleInput}>
-        <Pokenav displayPokemon={displayPokemon} handleInfo={handleInfo} />
+        <Pokenav displayPokemon={displayPokemon} /* handleInfo={handleInfo}*/ />
         <Switch>
           <Route
             path="/"
@@ -203,7 +109,7 @@ function Pokedex() {
             )}
           />
 
-          <Route path="/pokemon/:id/:name" component={RenderPokeInfo} />
+          <Route path="/pokemon/:name/:id" component={RenderPokeInfo} />
         </Switch>
 
         {/*    {displayPokedex ? (
