@@ -1,28 +1,8 @@
-1 - fix issues from previous built
-2 - handle react router history
 
-* use https://pokeapi.co/api/v2/pokemon-species/ to get the following data
-
--
-- included in the url is https://pokeapi.co/api/v2/evolution-chain/
-    - used to obtain evolution line/chain 
-
-
-to ectract id number form url
-const word = "https://pokeapi.co/api/v2/pokemon/10065/"
-word.replace("https://pokeapi.co/api/v2/pokemon/","").replace("/","")
-returns 10065
 
 /// focus here ////
-4 - fix alt form dropdown menu - DONE
-6 - add react router - MISSION FAILED
-7 - make app responsive and redesign mobile UI - DONE
-8 - fix all React log errors
-9 - refctor, such as using padTothree
-10 - when user cicks on a pokemon, move display to top of page - DONE
-11 - fix ability overflow
-12 - redo the entire navigation
-example - pokemon?limit=100&offset=151
-          limit - how many pokemon to fetch
-          offset - where to begin the count
--- how to access props in render vs component
+
+1 - fix all React log errors
+2 - refctor, such as using padTothree
+3 - add loading image - DONE
+4 - fix browser icon issue, set pokeball as page icon

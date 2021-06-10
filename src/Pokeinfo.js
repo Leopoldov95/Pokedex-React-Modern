@@ -134,10 +134,10 @@ function Pokeinfo(props) {
   const generateEvoCard = (data) => {
     return data.map((evo) => (
       <Link
-        to={`/pokemon/${evo.name}/${
-          PokeList.indexOf(evo.name[0].toUpperCase() + evo.name.substring(1)) +
-          1
-        }`}
+        key={evo.name}
+        to={`/pokemon/${evo.url
+          .replace("https://pokeapi.co/api/v2/pokemon-species/", "")
+          .replace("/", "")}`}
       >
         <div key={evo.name} className="Pokeinfo-card">
           <img

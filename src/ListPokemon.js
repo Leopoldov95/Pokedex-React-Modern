@@ -5,11 +5,7 @@ import "./ListPokemon.css";
 
 function ListPokemon(props) {
   return (
-    <Link
-      to={`/pokemon/${props.name.toLowerCase()}/${Number(
-        PokeName.indexOf(props.name) + 1
-      )}`}
-    >
+    <Link to={`/pokemon/${Number(PokeName.indexOf(props.name) + 1)}`}>
       <li
         className="Listpokemon"
         /* onClick={() =>

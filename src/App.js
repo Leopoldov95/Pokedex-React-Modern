@@ -6,9 +6,7 @@ import Pokedex from "./Pokedex";
 function App() {
   return (
     <div className="App">
-      {/* Components go here */}
       <Pokedex />
-      {/* Components that need to be redirected go here */}
     </div>
   );
 }

@@ -3,12 +3,10 @@ import { Link } from "react-router-dom";
 import "./Pokecard.css";
 
 function Pokecard(props) {
-  // console.log(props);
   return (
-    <Link to={`/pokemon/${props.name}/${props.id}`}>
+    <Link to={`/pokemon/${props.id}`}>
       <div
         className="Pokecard"
-        // onClick={props.handleInfo}
         style={{ backgroundColor: `var(--bg-${props.type[0]})` }}
       >
         <p>{props.id <= 999 ? `00${props.id}`.slice(-3) : props.id}</p>

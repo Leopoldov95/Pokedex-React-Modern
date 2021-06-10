@@ -5,8 +5,6 @@ import Autocomplete from "./Autocomplete";
 import logo from "./pokeball.png";
 
 function Pokenav(props) {
-  const limit = [151, 251, 386, 493, 649, 721, 809, 898];
-
   const handleMenuBtn = () => {
     const x = document.querySelector(".myLinks");
     x.classList.toggle("menu-active");

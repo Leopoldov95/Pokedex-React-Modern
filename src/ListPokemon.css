@@ -1,6 +1,7 @@
 .Listpokemon {
   display: flex;
   align-items: center;
+  color: black;
 }
 
 .Listpokemon img {

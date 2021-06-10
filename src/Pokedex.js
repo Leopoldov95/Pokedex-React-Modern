@@ -14,13 +14,10 @@ import "./media.css";
 
 const API_URl = "https://pokeapi.co/api/v2/pokemon/";
 const IMG_URL = "https://img.pokemondb.net/sprites/home/normal/";
-const POKE_FORMS = "https://pokeapi.co/api/v2/pokemon-species/";
 
 function Pokedex() {
   const defaultCall = 151;
   const [pokemon, setPokemon] = useState([]);
-
-  const [displayPokedex, setDisplayPokedex] = useState(true);
 
   useEffect(() => {
     getPokemon(defaultCall, 0);
@@ -50,7 +47,7 @@ function Pokedex() {
           img: `${IMG_URL}${name}.png`,
         });
       }
-      setDisplayPokedex(true);
+
       setPokemon([...pokemon]);
     } catch (err) {
       alert(err);
@@ -84,7 +81,6 @@ function Pokedex() {
 
   let generatePokemon = pokemon.map((p) => (
     <Pokecard
-      // handleInfo={() => handleInfo(p.info, p.id)}
       type={TypeInfo[p.id - 1]}
       name={p.name}
       info={p.info}
@@ -109,21 +105,9 @@ function Pokedex() {
             )}
           />
 
-          <Route path="/pokemon/:name/:id" component={RenderPokeInfo} />
+          <Route path="/pokemon/:id" component={RenderPokeInfo} />
         </Switch>
 
-        {/*    {displayPokedex ? (
-          <div>
-            <div className="Pokedex-pokemon">{generatePokemon}</div>
-          </div>
-        ) : (
-          <RenderPokeInfo
-            handleMenuBtn={handleMenuBtn}
-            handleInfo={handleInfo}
-            currentPokemon={currPokemon[0]}
-          />
-        )}
- */}
         <div className="Pokedex-footer">
           <p>
             created by{" "}

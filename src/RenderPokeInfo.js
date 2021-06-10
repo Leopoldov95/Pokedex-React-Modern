@@ -2,35 +2,31 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Pokeinfo from "./Pokeinfo";
 import axios from "axios";
-import uuid from "uuid/dist/v4";
+
 import PokeJSON from "./pokemon.json";
 
 const API_URl = "https://pokeapi.co/api/v2/pokemon/";
-const POKE_FORMS = "https://pokeapi.co/api/v2/pokemon-species/";
 
 function RenderPokeInfo(props) {
-  // may want to put handleMenuBtn here
-
   const [currPokemon, setCurrPokemon] = useState([]);
 
   useEffect(() => {
+    let isCancelled = false;
     window.scrollTo(0, 0);
-    handleInfo(props.match.params.name, props.match.params.id);
-    console.log("I was executed at main render");
-  }, []);
+    if (!isCancelled) {
+      handleInfo(props.match.params.id);
+    }
+
+    return () => {
+      isCancelled = true;
+    };
+  }, []); // eslint-disable-next-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    handleInfo(props.match.params.name, props.match.params.id);
-  }, [props]);
+    handleInfo(props.match.params.id);
+  }, [props]); // eslint-disable-next-line react-hooks/exhaustive-deps
 
-  /* useEffect(() => {
-    console.log("i was executed as a side effect");
-    handleInfo(`${API_URl}${props.match.params.id}`, props.match.params.name);
-    window.scrollTo(0, 0);
-  }, [currPokemon]); */
-
-  //const currentPokemon = props.currentPokemon;
   const handleMenuBtn = () => {
     const x = document.querySelector(".menu-toggle");
     x.classList.toggle(".active");
@@ -43,17 +39,17 @@ function RenderPokeInfo(props) {
   };
   const getPokeInfo = async (url) => {
     try {
-      let res = await axios.get(`${API_URl}${url}`);
+      let res = await axios.get(`${API_URl}${url}/`);
       return res.data;
     } catch (err) {
       alert(err);
     }
   };
 
-  const getForms = async (forms) => {
+  const getForms = async (url) => {
     let varData = [];
     let desc;
-    let res = await axios.get(`${POKE_FORMS}${forms}/`);
+    let res = await axios.get(url);
     let { evolution_chain, flavor_text_entries, varieties } = res.data;
     for (let i of flavor_text_entries) {
       if (i.language.name === "en") {
@@ -73,7 +69,7 @@ function RenderPokeInfo(props) {
     varData.push(varieties[0].pokemon);
     return { evolution_chain, desc, varData };
   };
-  const handleInfo = async (pokeName, pokeId) => {
+  const handleInfo = async (pokeId) => {
     closeAutocomplete();
     closeFormSel();
     let data = [];
@@ -89,8 +85,7 @@ function RenderPokeInfo(props) {
       sprites,
     } = await getPokeInfo(pokeId);
 
-    // left off here, handle the addtional information!
-    let { varData, desc, evolution_chain } = await getForms(pokeName);
+    let { varData, desc, evolution_chain } = await getForms(species.url);
 
     data.push({
       name,
@@ -106,10 +101,8 @@ function RenderPokeInfo(props) {
       desc,
       evolution_chain,
     });
-    //console.log(data);
-    setCurrPokemon(data); // set this first otherwise it will crash the app
 
-    //setDisplayPokedex(false);
+    setCurrPokemon(data);
   };
   const closeFormSel = () => {
     if (document.querySelector(".Pokedex-dropdown-items")) {
@@ -124,23 +117,23 @@ function RenderPokeInfo(props) {
     }
   };
 
-  console.log(currPokemon[0]);
   return (
     <div>
       {currPokemon < 1 ? (
-        <h1>Still Loading...</h1>
+        <div>
+          <img
+            src="/poke-ball.png"
+            alt="pokeball_loader"
+            className="Pokedex-loader"
+          />
+          <h2>Loading... </h2>
+        </div>
       ) : (
         <div className="Pokedex-info-container">
           <div className="Pokedex-header">
             <div className="Pokedex-cntrl">
               <Link
-                to={`/pokemon/${PokeJSON[
-                  Number(
-                    currPokemon[0].species.url
-                      .replace("https://pokeapi.co/api/v2/pokemon-species/", "")
-                      .replace("/", "")
-                  ) - 2
-                ].toLowerCase()}/${
+                to={`/pokemon/${
                   Number(
                     currPokemon[0].species.url
                       .replace("https://pokeapi.co/api/v2/pokemon-species/", "")
@@ -148,24 +141,7 @@ function RenderPokeInfo(props) {
                   ) - 1
                 }`}
               >
-                <div
-                  className="Pokedex-prev"
-                  /* onClick={() =>
-                  PokeJSON[
-                    Number(
-                      currPokemon[0].varData[0].url
-                        .replace("https://pokeapi.co/api/v2/pokemon/", "")
-                        .replace("/", "")
-                    ) - 2
-                  ] !== undefined && 
-                  props.handleInfo(
-                    `${API_URl}${Number(
-                      currPokemon[0].species.url.split("/")[6] - 1
-                    )}/`,
-                    Number(currPokemon[0].species.url.split("/")[6] - 1)
-                  )
-                } */
-                >
+                <div className="Pokedex-prev">
                   <i className="fas fa-angle-left"></i>
                 </div>
               </Link>
@@ -206,19 +182,14 @@ function RenderPokeInfo(props) {
                 <ul className="Pokedex-dropdown-ul">
                   {currPokemon[0].varData.map((form) => (
                     <Link
-                      to={`/pokemon/${currPokemon[0].name}/${Number(
+                      key={form.name}
+                      to={`/pokemon/${Number(
                         form.url
                           .replace("https://pokeapi.co/api/v2/pokemon/", "")
                           .replace("/", "")
                       )}`}
                     >
-                      <li
-                        className="Pokedex-dropdown-li"
-                        key={form.name}
-                        /*  onClick={() =>
-                        props.handleInfo(form.url, form.name.split("-")[0])
-                      } */
-                      >
+                      <li className="Pokedex-dropdown-li" key={form.name}>
                         {form.name[0].toUpperCase() + form.name.substring(1)}
                       </li>
                     </Link>
@@ -248,13 +219,7 @@ function RenderPokeInfo(props) {
                     ]}
               </span>
               <Link
-                to={`/pokemon/${PokeJSON[
-                  Number(
-                    currPokemon[0].species.url
-                      .replace("https://pokeapi.co/api/v2/pokemon-species/", "")
-                      .replace("/", "")
-                  )
-                ].toLowerCase()}/${
+                to={`/pokemon/${
                   Number(
                     currPokemon[0].species.url
                       .replace("https://pokeapi.co/api/v2/pokemon-species/", "")
@@ -262,24 +227,7 @@ function RenderPokeInfo(props) {
                   ) + 1
                 }`}
               >
-                <div
-                  className="Pokedex-next"
-                  /*  onClick={() =>
-                  PokeJSON[
-                    Number(
-                      currPokemon[0].varData[0].url
-                        .replace("https://pokeapi.co/api/v2/pokemon/", "")
-                        .replace("/", "")
-                    )
-                  ] !== undefined &&
-                  props.handleInfo(
-                    `${API_URl}${
-                      Number(currPokemon[0].species.url.split("/")[6]) + 1
-                    }/`,
-                    Number(currPokemon[0].species.url.split("/")[6]) + 1
-                  )
-                } */
-                >
+                <div className="Pokedex-next">
                   <i className="fas fa-angle-right"></i>
                 </div>
               </Link>
@@ -294,13 +242,11 @@ function RenderPokeInfo(props) {
             height={currPokemon[0].height}
             abilities={currPokemon[0].abilities}
             id={currPokemon[0].id}
-            key={uuid()}
             stats={currPokemon[0].stats}
             forms={currPokemon[0].varData}
             species={currPokemon[0].species}
             desc={currPokemon[0].desc}
             evolution={currPokemon[0].evolution_chain}
-            handleInfo={props.handleInfo}
           />
         </div>
       )}
