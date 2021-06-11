@@ -6,12 +6,7 @@ import "./ListPokemon.css";
 function ListPokemon(props) {
   return (
     <Link to={`/pokemon/${Number(PokeName.indexOf(props.name) + 1)}`}>
-      <li
-        className="Listpokemon"
-        /* onClick={() =>
-          props.displayPokemon(props.url, props.name.toLowerCase())
-        } */
-      >
+      <li className="Listpokemon">
         <img src={props.img} alt={props.name} />
         {props.name}
       </li>

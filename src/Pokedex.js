@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import axios from "axios";
-
 import Pokecard from "./Pokecard";
-
 import RenderPokeInfo from "./RenderPokeInfo";
-
 import TypeInfo from "./types.json";
-
+import NoPage from "./NoPage";
 import Pokenav from "./Pokenav";
 import "./Pokedex.css";
 import "./media.css";
@@ -105,7 +102,9 @@ function Pokedex() {
             )}
           />
 
-          <Route path="/pokemon/:id" component={RenderPokeInfo} />
+          <Route path="/pokemon/:id" exact component={RenderPokeInfo} />
+
+          <Route path="*" component={NoPage} />
         </Switch>
 
         <div className="Pokedex-footer">

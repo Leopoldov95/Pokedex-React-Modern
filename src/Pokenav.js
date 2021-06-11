@@ -7,6 +7,7 @@ import logo from "./pokeball.png";
 function Pokenav(props) {
   const handleMenuBtn = () => {
     const x = document.querySelector(".myLinks");
+
     x.classList.toggle("menu-active");
   };
 
@@ -26,12 +27,9 @@ function Pokenav(props) {
           </div>
           <div className="mobile-menu">
             <div className="topnav">
-              <a className="mobile-active" href="#home">
-                {" "}
-              </a>
-              <a className="icon" href="#" id="mobile" onClick={handleMenuBtn}>
+              <button className="icon" id="mobile" onClick={handleMenuBtn}>
                 <i className="fa fa-bars"></i>
-              </a>
+              </button>
             </div>
           </div>
         </div>

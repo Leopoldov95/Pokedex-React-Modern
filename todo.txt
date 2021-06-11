@@ -1,8 +1,0 @@
-
-
-/// focus here ////
-
-1 - fix all React log errors
-2 - refctor, such as using padTothree
-3 - add loading image - DONE
-4 - fix browser icon issue, set pokeball as page icon

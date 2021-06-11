@@ -67,6 +67,8 @@ a {
 
 .mobile-menu .icon {
   color: white;
+  border: none;
+  background-color: transparent;
 }
 
 .menu-active .Pokenav-nav-bottom {

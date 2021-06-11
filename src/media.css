@@ -93,9 +93,12 @@
     width: 100%;
     z-index: 5;
   }
+
+  .Pokenav-nav-bottom li {
+    padding: 9px 10px;
+  }
   .Pokedex-pokemon {
     flex-direction: column;
-    align-items: center;
     margin: 0;
     padding-top: 42px;
   }
@@ -107,7 +110,7 @@
     display: grid;
     grid-template-columns: 2fr 4fr;
     align-items: center;
-    margin: 3px 0;
+    margin: 3px auto;
   }
 
   .Pokecard .Pokecard-info {
@@ -148,6 +151,9 @@
     cursor: pointer;
     transform: none;
     transition: all 300ms ease;
+  }
+  .Pokedex-info-container {
+    padding-top: 43px;
   }
   .Pokedex-info-container .Pokedex-header {
     grid-template-columns: 1fr 200px 1fr;
