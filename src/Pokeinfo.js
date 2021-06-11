@@ -50,7 +50,7 @@ function Pokeinfo(props) {
       }
     };
     handleEvoData(props.evolution);
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [props]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const padToThree = (num) => {
     return num <= 999 ? `00${num}`.slice(-3) : num;
