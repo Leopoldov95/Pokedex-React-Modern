@@ -9,7 +9,7 @@
 
 
 ## General Info
-This is my full feautured ReactJS Pokedex web app. This pokedex shows all current Pokemon as of Generation 8 and includes all forms and variations (such as meha evolutions, alolan, galar, and G-Max). This app has an eavy to use navbar and a searchbar to look for a specific Pokemon. The goal of this project was to learn more about the tool and feautres of ReactJS and to learn more about Web Development. I definetely had a lot of fun and frustration creating this app but I am quite happy with the result. 
+This is my full featured ReactJS Pokedex web app. This pokedex shows all current Pokemon as of Generation 8 and includes all forms and variations (such as meha evolutions, alolan, galar, and G-Max). This app has an eavy to use navbar and a searchbar to look for a specific Pokemon. The goal of this project was to learn more about the tool and feautres of ReactJS and to learn more about Web Development. I definetely had a lot of fun and frustration creating this app but I am quite happy with the result. 
 
 ## Screenshot
 ![ScreenShot](https://github.com/Leopoldov95/Pokedex-React-Modern/blob/main/pokedex_screenshot.png?raw=true)
