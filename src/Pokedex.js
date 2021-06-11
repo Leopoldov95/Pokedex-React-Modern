@@ -104,7 +104,7 @@ function Pokedex() {
 
           <Route path="/pokemon/:id" exact component={RenderPokeInfo} />
 
-          <Route path="/*" component={NoPage} />
+          <Route path="*" component={NoPage} />
         </Switch>
 
         <div className="Pokedex-footer">
