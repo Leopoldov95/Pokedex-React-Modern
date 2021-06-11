@@ -1,70 +1,40 @@
-# Getting Started with Create React App
+# ReactJS Pokedex
+## Table of Contents
+* [General Info](#general-info)
+* [Usage](#usage)
+* [Features](#features)
+* [Screenshot](#screenshot)
+* [Technologies](#technologies)
+* [What I Learned](#what-i-learned)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## General Info
+This is my full feautured ReactJS Pokedex web app. This pokedex shows all current Pokemon as of Generation 8 and includes all forms and variations (such as meha evolutions, alolan, galar, and G-Max). This app has an eavy to use navbar and a searchbar to look for a specific Pokemon. The goal of this project was to learn more about the tool and feautres of ReactJS and to learn more about Web Development. I definetely had a lot of fun and frustration creating this app but I am quite happy with the result. 
 
-In the project directory, you can run:
+## Screenshot
+![ScreenShot](https://github.com/Leopoldov95/Pokedex-React-Modern/blob/main/pokedex_screenshot.png?raw=true)
 
-### `npm start`
+## Usage
+Simply click on the demo link provided.
+If you wish to download the code and use it, you must first download or clone the repo and run:
+```bash
+npm install
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Features
+* All 898 Pokemon displayed in a beautiful UI
+* An autocomplete searchbar that allows you to search for any Pokemon
+* Pokemon display cards have a dynamic background color based on type
+* Useful Pokemon info such as height, weight, stats, Pokedex description, and evolutionary forms
+* The ability to choose between different Pokemon forms (such as Charizard, Mega-Charizard-Y, G-Max Charizard, etc.)
+* Pokedex is fully responsive and looks great on multiple screens
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+## Technologies
+The app was created with the following technologies
+* ReactJS
+* CSS
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## What I Learned
+This is my second version of creating a ReactJS Pokedex. The first version was functional but had a less appealing UI and had some minor bugs. For this version I used better images for the Pokedex and display the people types using custom icons and making the background color dynamic. I also used some of the more modern features of ReactJS such as hooks and react-router to really make this app more user friendly and deliver a nicer User Experience. It was defintely challenging learning how to use ReactJS, but it was very rewarding and I'm quite proud of how this version of the Pokedex turned out.
