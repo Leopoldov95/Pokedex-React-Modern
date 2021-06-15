@@ -21,6 +21,11 @@ If you wish to download the code and use it, you must first download or clone th
 npm install
 ```
 
+Then type;
+```bash
+npm start 
+```
+
 ## Features
 * All 898 Pokemon displayed in a beautiful UI
 * An autocomplete searchbar that allows you to search for any Pokemon
