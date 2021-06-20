@@ -215,4 +215,13 @@
   .menu-active {
     display: flex !important;
   }
+
+  .NoPage img {
+    height: 200px;
+    margin-top: 3rem;
+  }
+
+  .NoPage h1 {
+    font-size: 1rem;
+  }
 }

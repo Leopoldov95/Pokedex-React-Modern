@@ -1,9 +1,9 @@
 import React from "react";
-
+import "./NoPage.css";
 function noPage() {
   return (
-    <div>
-      <img src="/404.jpeg" alt="404_img" style={{ height: "300px" }} />
+    <div className="NoPage">
+      <img src="/404.jpeg" alt="404_img" />
       <h1>Sorry, the page you're looking for doesn't exist...</h1>
     </div>
   );
