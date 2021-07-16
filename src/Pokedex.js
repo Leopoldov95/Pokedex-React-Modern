@@ -47,7 +47,9 @@ function Pokedex() {
 
       setPokemon([...pokemon]);
     } catch (err) {
-      alert(err);
+      alert(
+        "unable to connect to pokeAPI server, if you are connected to the internet but from a workplace connection, they may be blocking access to video game related content."
+      );
     }
   };
 
