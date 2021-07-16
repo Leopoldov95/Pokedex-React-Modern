@@ -93,15 +93,27 @@ function Pokedex() {
     <Router>
       <div className="Pokedex" onClick={handleInput}>
         <Pokenav displayPokemon={displayPokemon} /* handleInfo={handleInfo}*/ />
+
         <Switch>
           <Route
             path="/"
             exact
-            render={() => (
-              <div>
-                <div className="Pokedex-pokemon">{generatePokemon}</div>
-              </div>
-            )}
+            render={() =>
+              pokemon.length < 1 ? (
+                <div>
+                  <img
+                    src="/poke-ball.png"
+                    alt="pokeball_loader"
+                    className="Pokedex-loader"
+                  />
+                  <h2>Loading... </h2>
+                </div>
+              ) : (
+                <div>
+                  <div className="Pokedex-pokemon">{generatePokemon}</div>
+                </div>
+              )
+            }
           />
 
           <Route path="/pokemon/:id" exact component={RenderPokeInfo} />
