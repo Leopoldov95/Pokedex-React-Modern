@@ -1,5 +1,7 @@
 # ReactJS Pokedex
 ![header](https://github.com/Leopoldov95/Pokedex-React-Modern/blob/main/header.png)
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/af77aa79-ae8e-43e2-8717-924cc0ca8643/deploy-status)](https://app.netlify.com/sites/reactjsnationaldex/deploys)
 ## Table of Contents
 * [General Info](#general-info)
 * [Usage](#usage)
