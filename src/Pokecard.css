@@ -1,22 +1,22 @@
 :root {
-  --bg-water: rgba(0, 0, 255, 0.7);
-  --bg-fire: rgba(255, 0, 0, 0.7);
-  --bg-grass: rgba(0, 128, 0, 0.7);
-  --bg-psychic: rgba(128, 0, 128, 0.7);
-  --bg-ghost: rgba(75, 0, 130, 0.7);
-  --bg-ground: rgba(222, 184, 135, 0.7);
-  --bg-fighting: rgba(220, 20, 60, 0.7);
-  --bg-dragon: rgba(72, 61, 139, 0.7);
-  --bg-fairy: rgba(255, 192, 203, 0.7);
-  --bg-electric: rgba(255, 215, 0, 0.7);
-  --bg-bug: rgba(128, 128, 0, 0.7);
-  --bg-poison: rgba(139, 0, 139, 0.7);
-  --bg-dark: rgba(0, 0, 0, 0.7);
-  --bg-steel: rgba(192, 192, 192, 0.7);
-  --bg-normal: rgba(128, 128, 128, 0.7);
-  --bg-rock: rgba(165, 42, 42, 0.7);
-  --bg-ice: rgba(0, 128, 128, 0.7);
-  --bg-flying: rgba(173, 216, 230, 0.7);
+  --bg-water: rgba(0, 0, 255, 0.5);
+  --bg-fire: rgba(255, 0, 0, 0.5);
+  --bg-grass: rgba(0, 128, 0, 0.5);
+  --bg-psychic: rgba(128, 0, 128, 0.5);
+  --bg-ghost: rgba(75, 0, 130, 0.5);
+  --bg-ground: rgba(222, 184, 135, 0.5);
+  --bg-fighting: rgba(220, 20, 60, 0.5);
+  --bg-dragon: rgba(72, 61, 139, 0.5);
+  --bg-fairy: rgba(255, 192, 203, 0.5);
+  --bg-electric: rgba(255, 215, 0, 0.5);
+  --bg-bug: rgba(128, 128, 0, 0.5);
+  --bg-poison: rgba(139, 0, 139, 0.5);
+  --bg-dark: rgba(0, 0, 0, 0.5);
+  --bg-steel: rgba(192, 192, 192, 0.5);
+  --bg-normal: rgba(128, 128, 128, 0.5);
+  --bg-rock: rgba(165, 42, 42, 0.5);
+  --bg-ice: rgba(0, 128, 128, 0.5);
+  --bg-flying: rgba(173, 216, 230, 0.5);
 }
 
 .Pokecard {
